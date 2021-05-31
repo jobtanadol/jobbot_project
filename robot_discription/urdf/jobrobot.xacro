@@ -1,0 +1,371 @@
+<?xml version="1.0"?>
+<robot name="jobrobot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <link name="base">
+   <inertial>
+     <origin xyz="0 0 0.3" rpy="0 0 0"/>
+     <mass value="3"/>
+     <inertia ixx="1"  ixy="0"  ixz="0" iyy="1" iyz="0" izz="1" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0.3" rpy="0 0 0" />
+     <geometry>
+       <box size="0.5 0.7 0.2" />
+     </geometry>
+     <material name="Cyan">
+       <color rgba="0 1.0 1.0 1.0"/>
+     </material>
+   </visual>
+   <visual name="supportright">
+     <origin xyz="0.05 0 0.15" rpy="0 0 0" />
+     <geometry>
+       <box size="0.05 0.7 0.2" />
+     </geometry>
+     <material name="Cyan">
+       <color rgba="0 1.0 1.0 1.0"/>
+     </material>
+   </visual>    
+   
+   <collision>
+     <origin xyz="0 0 0.3" rpy="0 0 0"/>
+     <geometry>
+       <box size="0.2 0.4 0.2"/>
+     </geometry>
+   </collision>
+    <collision name="supportright">
+     <origin xyz="0.05 0 0.15" rpy="0 0 0"/>
+     <geometry>
+       <box size="0.05 0.7 0.2"/>
+     </geometry>
+   </collision>
+   
+     
+ </link>
+ <link name="wheel_back">
+   <inertial>
+     <origin xyz="0 0 0" rpy="0 1.5707 0"/>
+     <mass value="1"/>
+     <inertia ixx="1"  ixy="0"  ixz="0" iyy="1" iyz="0" izz="1" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 1.5707 0" />
+     <geometry>
+       <cylinder radius="0.1" length="0.05" />
+     </geometry>
+     <material name="Cyan">
+       <color rgba="0 1.0 1.0 1.0"/>
+     </material>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 1.5707 0"/>
+     <geometry>
+       <cylinder radius="0.1" length="0.05" />
+     </geometry>
+   </collision>
+ </link>
+ <joint name="joint_wheel_back" type="continuous">
+    <origin xyz="0 0.35 0.1" rpy="0 0 0"/>
+    <parent link="base"/>
+    <child link="wheel_back"/>
+
+    <calibration rising="0.0"/>
+    <dynamics damping="0.0" friction="1"/>
+    <limit effort="30" velocity="1.0" lower="-2.2" upper="0.7" />
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="-2.0" soft_upper_limit="0.5" />
+ </joint>
+ 
+ <link name="wheel_front">
+   <inertial>
+     <origin xyz="0 0 0" rpy="0 1.5707 0"/>
+     <mass value="1"/>
+     <inertia ixx="1"  ixy="0"  ixz="0" iyy="1" iyz="0" izz="1" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 1.5707 0" />
+     <geometry>
+       <cylinder radius="0.1" length="0.05" />
+     </geometry>
+     <material name="Cyan">
+       <color rgba="0 1.0 1.0 1.0"/>
+     </material>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 1.5707 0"/>
+     <geometry>
+       <cylinder radius="0.1" length="0.05" />
+     </geometry>
+   </collision>
+ </link>
+ <joint name="joint_wheel_front" type="continuous">
+    <origin xyz="0 -0.35 0.1" rpy="0 0 0"/>
+    <parent link="base"/>
+    <child link="wheel_front"/>
+
+    <calibration rising="0.0"/>
+    <dynamics damping="0.0" friction="1"/>
+    <limit effort="30" velocity="1.0" lower="-2.2" upper="0.7" />
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="-2.0" soft_upper_limit="0.5" />
+ </joint>
+ 
+ <link name="wheel_right">
+   <inertial>
+     <origin xyz="0 0 0" rpy="0 1.5707 0"/>
+     <mass value="1"/>
+     <inertia ixx="1"  ixy="0"  ixz="0" iyy="1" iyz="0" izz="1" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 1.5707 0" />
+     <geometry>
+       <cylinder radius="0.2" length="0.13" />
+     </geometry>
+     <material name="Cyan">
+       <color rgba="0 1.0 1.0 1.0"/>
+     </material>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 1.5707 0"/>
+     <geometry>
+       <cylinder radius="0.2" length="0.13" />
+     </geometry>
+   </collision>
+ </link>
+ <joint name="joint_wheel_right" type="continuous">
+    <origin xyz="0.32 0 0.2" rpy="0 0 0"/>
+    <parent link="base"/>
+    <child link="wheel_right"/>
+
+    <calibration rising="0.0"/>
+    <dynamics damping="0.0" friction="1"/>
+    
+ </joint>
+ <link name="wheel_left">
+   <inertial>
+     <origin xyz="0 0 0" rpy="0 1.5707 0"/>
+     <mass value="1"/>
+     <inertia ixx="1"  ixy="0"  ixz="0" iyy="1" iyz="0" izz="1" />
+   </inertial>
+
+   <visual>
+     <origin xyz="0 0 0" rpy="0 1.5707 0" />
+     <geometry>
+       <cylinder radius="0.2" length="0.13" />
+     </geometry>
+     <material name="Cyan">
+       <color rgba="0 1.0 1.0 1.0"/>
+     </material>
+   </visual>
+
+   <collision>
+     <origin xyz="0 0 0" rpy="0 1.5707 0"/>
+     <geometry>
+       <cylinder radius="0.2" length="0.13" />
+     </geometry>
+   </collision>
+ </link>
+ <joint name="joint_wheel_left" type="continuous">
+    <origin xyz="-0.32 0 0.2" rpy="0 0 0"/>
+    <parent link="base"/>
+    <child link="wheel_left"/>
+
+    <calibration rising="0.0"/>
+    <dynamics damping="0.0" friction="1"/>
+    
+ </joint>
+ 
+  <joint name="camera_joint" type="fixed">
+    <axis xyz="0 0 0" />
+    <origin xyz="0 -0.37 0.25" rpy="0 0 -1.5707"/>
+    <parent link="base"/>
+    <child link="camera_link"/>
+  </joint>
+
+  <!-- Camera -->
+  <link name="camera_link">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+    <box size="0.05 0.05 0.05"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+    <box size="0.05 0.05 0.05"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+  <!-- camera -->
+  <gazebo reference="camera_link">
+    <sensor type="camera" name="camera1">
+      <update_rate>30.0</update_rate>
+      <camera name="head">
+        
+        <image>
+          <width>1600</width>
+          <height>800</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.2</near>
+          <far>500</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise is sampled independently per pixel on each frame.
+               That pixel's noise value is added to each of its color
+               channels, which at that point lie in the range [0,1]. -->
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>rrbot/camera1</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>camera_link</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo>
+  
+  <!-- hokuyo -->
+  <gazebo reference="hokuyo_link">
+    <sensor type="ray" name="head_hokuyo_sensor">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>true</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.570796</min_angle>
+            <max_angle>1.570796</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.10</min>
+          <max>30.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise parameters based on published spec for Hokuyo laser
+               achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
+               stddev of 0.01m will put 99.7% of samples within 0.03m of the true
+               reading. -->
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
+        <topicName>/rrbot/laser/scan</topicName>
+        <frameName>hokuyo_link</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+  
+  <joint name="hokuyo_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="0 0 0.43" rpy="0 0 -1.5707"/>
+    <parent link="base"/>
+    <child link="hokuyo_link"/>
+  </joint>
+
+  <!-- Hokuyo Laser -->
+  <link name="hokuyo_link">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+    <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://robot_discription/meshes/hokuyo.dae"/>
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+  
+  <gazebo>
+  <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+
+    <!-- Plugin update rate in Hz -->
+    <updateRate>100</updateRate>
+
+    <!-- Name of left joint, defaults to `left_joint` -->
+    <leftJoint>joint_wheel_left</leftJoint>
+
+    <!-- Name of right joint, defaults to `right_joint` -->
+    <rightJoint>joint_wheel_right</rightJoint>
+
+    <!-- The distance from the center of one wheel to the other, in meters, defaults to 0.34 m -->
+    <wheelSeparation>0.6</wheelSeparation>
+
+    <!-- Diameter of the wheels, in meters, defaults to 0.15 m -->
+    <wheelDiameter>0.25</wheelDiameter>
+
+    <!-- Wheel acceleration, in rad/s^2, defaults to 0.0 rad/s^2 -->
+    <wheelAcceleration>0.3</wheelAcceleration>
+
+    <!-- Maximum torque which the wheels can produce, in Nm, defaults to 5 Nm -->
+    <wheelTorque>10</wheelTorque>
+
+    <!-- Topic to receive geometry_msgs/Twist message commands, defaults to `cmd_vel` -->
+    <commandTopic>cmd_vel</commandTopic>
+
+    <!-- Topic to publish nav_msgs/Odometry messages, defaults to `odom` -->
+    <odometryTopic>odom</odometryTopic>
+
+    <!-- Odometry frame, defaults to `odom` -->
+    <odometryFrame>odom</odometryFrame>
+
+    <!-- Robot frame to calculate odometry from, defaults to `base_footprint` -->
+    <robotBaseFrame>base</robotBaseFrame>
+
+    <!-- Odometry source, 0 for ENCODER, 1 for WORLD, defaults to WORLD -->
+    <odometrySource>1</odometrySource>
+
+    <!-- Set to true to publish transforms for the wheel links, defaults to false -->
+    <publishWheelTF>false</publishWheelTF>
+
+    <!-- Set to true to publish transforms for the odometry, defaults to true -->
+    <publishOdom>true</publishOdom>
+
+    <!-- Set to true to publish sensor_msgs/JointState on /joint_states for the wheel joints, defaults to false -->
+    <publishWheelJointState>true</publishWheelJointState>
+
+    <!-- Set to true to swap right and left wheels, defaults to true -->
+    <legacyMode>false</legacyMode>
+  </plugin>
+</gazebo>
+</robot>
